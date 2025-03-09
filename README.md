@@ -1,72 +1,40 @@
-# Welcome to TanStack.com!
+# User Management Application
 
-This site is built with TanStack Router!
+This project is a React application built with TypeScript, utilizing the TanStack Router and React Query for efficient data fetching and routing. The application fetches user data from the [GoRest API](https://gorest.co.in/) and displays it in a user-friendly interface.
 
-- [TanStack Router Docs](https://tanstack.com/router)
+## Features
 
-It's deployed automagically with Netlify!
+1. **User List Page**:
 
-- [Netlify](https://netlify.com/)
+   - Displays a list of users fetched from the GoRest API.
+   - The list can be filtered by "name", "email", "status", and "gender".
+   - Pagination is implemented to navigate through the user list.
+
+2. **User Detail Page**:
+
+   - Displays detailed information about a selected user from the list.
+   - Includes user details such as name, email, gender, and status.
+
+3. **Multilingual Support**:
+
+   - The application supports multiple languages (English and Italian).
+   - Language detection and translation are handled using `i18next`.
+
+4. **Error Handling**:
+
+   - Custom error components are used to handle and display errors gracefully.
+   - A "Not Found" component is displayed for invalid routes.
+
+5. **Styling**:
+   - The application uses Tailwind CSS for styling.
+   - PrimeReact components are used for UI elements like buttons and data tables.
 
 ## Development
 
-From your terminal:
+To set up the project locally, follow these steps:
 
-```sh
-pnpm install
-pnpm dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Editing and previewing the docs of TanStack projects locally
-
-The documentations for all TanStack projects except for `React Charts` are hosted on [https://tanstack.com](https://tanstack.com), powered by this TanStack Router app.
-In production, the markdown doc pages are fetched from the GitHub repos of the projects, but in development they are read from the local file system.
-
-Follow these steps if you want to edit the doc pages of a project (in these steps we'll assume it's [`TanStack/form`](https://github.com/tanstack/form)) and preview them locally :
-
-1. Create a new directory called `tanstack`.
-
-```sh
-mkdir tanstack
-```
-
-2. Enter the directory and clone this repo and the repo of the project there.
-
-```sh
-cd tanstack
-git clone git@github.com:TanStack/tanstack.com.git
-git clone git@github.com:TanStack/form.git
-```
-
-> [!NOTE]
-> Your `tanstack` directory should look like this:
->
-> ```
-> tanstack/
->    |
->    +-- form/
->    |
->    +-- tanstack.com/
-> ```
-
-> [!WARNING]
-> Make sure the name of the directory in your local file system matches the name of the project's repo. For example, `tanstack/form` must be cloned into `form` (this is the default) instead of `some-other-name`, because that way, the doc pages won't be found.
-
-3. Enter the `tanstack/tanstack.com` directory, install the dependencies and run the app in dev mode:
-
-```sh
-cd tanstack.com
-pnpm i
-# The app will run on https://localhost:3000 by default
-pnpm dev
-```
-
-4. Now you can visit http://localhost:3000/form/latest/docs/overview in the browser and see the changes you make in `tanstack/form/docs`.
-
-> [!NOTE]
-> The updated pages need to be manually reloaded in the browser.
-
-> [!WARNING]
-> You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+1. **Clone the Repository**:
+   ```sh
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
