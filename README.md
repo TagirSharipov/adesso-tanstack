@@ -20,13 +20,8 @@ This project is a React application built with TypeScript, utilizing the TanStac
    - The application supports multiple languages (English and Italian).
    - Language detection and translation are handled using `i18next`.
 
-4. **Error Handling**:
+4. **Styling**:
 
-   - Custom error components are used to handle and display errors gracefully.
-   - A "Not Found" component is displayed for invalid routes.
-
-5. **Styling**:
-   - The application uses Tailwind CSS for styling.
    - PrimeReact components are used for UI elements like buttons and data tables.
 
 ## Development
@@ -35,6 +30,17 @@ To set up the project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/TagirSharipov/adesso-tanstack.git
    cd <repository-directory>
    ```
+2. **Install dependencies**:
+
+```sh
+npm install
+```
+
+3. **Run the development server**:
+
+```sh
+npm run dev
+```
