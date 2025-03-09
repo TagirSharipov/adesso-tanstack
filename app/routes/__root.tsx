@@ -5,11 +5,59 @@ import * as React from 'react';
 import type { QueryClient } from '@tanstack/react-query';
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary';
 import { NotFound } from '~/components/NotFound';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import appCss from '~/styles/app.css?url';
 import { seo } from '~/utils/seo';
 import { PrimeReactProvider } from 'primereact/api';
+import i18n from 'i18next';
+import { useTranslation, initReactI18next } from 'react-i18next';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(LanguageDetector)
+  .init({
+    resources: {
+      en: {
+        translation: {
+          'Welcome Home!!!': 'Welcome Home!!!',
+          Users: 'Users',
+          id: 'ID',
+          name: 'Name',
+          email: 'Email',
+          gender: 'Gender',
+          status: 'Status',
+          back: 'Back',
+          'Search by id': 'Search by id',
+          'Search by name': 'Search by name',
+          'Search by email': 'Search by email',
+          'Select One': 'Select one',
+        },
+      },
+      it: {
+        translation: {
+          'Welcome Home!!!': 'Benvenuto!!!',
+          Users: 'Utenti',
+          id: 'ID',
+          name: 'Nome',
+          email: 'Email',
+          gender: 'Genere',
+          status: 'Stato',
+          back: 'Indietro',
+          'Search by id': 'Cerca per id',
+          'Search by name': 'Cerca per nome',
+          'Search by email': 'Cerca per email',
+          'Select One': 'Seleziona uno',
+        },
+      },
+    },
+
+    fallbackLng: 'en',
+
+    interpolation: {
+      escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    },
+  });
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
@@ -73,6 +121,7 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const { t } = useTranslation();
   return (
     <html>
       <head>
@@ -95,13 +144,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               className: 'font-bold',
             }}
           >
-            Users
+            {t('Users')}
           </Link>{' '}
         </div>
         <hr />
         {children}
-        <TanStackRouterDevtools position="bottom-right" />
-        <ReactQueryDevtools buttonPosition="bottom-left" />
+
         <Scripts />
       </body>
     </html>

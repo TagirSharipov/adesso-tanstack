@@ -8,6 +8,7 @@ import { FilterMatchMode } from 'primereact/api';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
 import usePaginator from '~/hooks/usePaginator';
 import { Paginator } from 'primereact/paginator';
+import { useTranslation } from 'react-i18next';
 export const Route = createFileRoute('/users/')({
   component: UsersIndexComponent,
 });
@@ -15,21 +16,23 @@ export const Route = createFileRoute('/users/')({
 function UsersIndexComponent() {
   const { first, pageSize, onPageChange } = usePaginator();
   const usersQuery = useSuspenseQuery(usersQueryOptions(Math.floor(first / pageSize) + 1, pageSize));
-  const [filters, setFilters] = useState<DataTableFilterMeta>({
+  const [filters] = useState<DataTableFilterMeta>({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     email: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.CONTAINS },
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
     gender: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
-  console.log(first, pageSize, usersQuery.data);
+
+  const { t } = useTranslation();
+
   const statusRowFilterTemplate = (options: ColumnFilterElementTemplateOptions) => {
     return (
       <Dropdown
         value={options.value}
         options={['active', 'inactive']}
         onChange={(e: DropdownChangeEvent) => options.filterApplyCallback(e.value)}
-        placeholder="Select One"
+        placeholder={t('Select One')}
         className="p-column-filter"
         showClear
         style={{ minWidth: '12rem' }}
@@ -42,7 +45,7 @@ function UsersIndexComponent() {
         value={options.value}
         options={['male', 'female']}
         onChange={(e: DropdownChangeEvent) => options.filterApplyCallback(e.value)}
-        placeholder="Select One"
+        placeholder={t('Select One')}
         className="p-column-filter"
         showClear
         style={{ minWidth: '12rem' }}
@@ -62,15 +65,28 @@ function UsersIndexComponent() {
       </Link>
     );
   };
+
   return (
     <div className="p-2 ">
       <DataTable value={usersQuery.data.data} rows={10} dataKey="id" filters={filters} filterDisplay="row">
-        <Column field="id" header="id" filter filterPlaceholder="Search by id" body={idBodyTemplate} />
-        <Column field="name" header="Name" filter filterPlaceholder="Search by name" />
-        <Column field="email" header="Email" filter filterPlaceholder="Search by name" />
-        <Column field="gender" header="Gender" filter filterElement={genderRowFilterTemplate} showFilterMenu={false} />
+        <Column field="id" header={t('id')} filter filterPlaceholder={t('Search by id')} body={idBodyTemplate} />
+        <Column field="name" header={t('name')} filter filterPlaceholder={t('Search by name')} />
+        <Column field="email" header={t('email')} filter filterPlaceholder={t('Search by email')} />
+        <Column
+          field="gender"
+          header={t('gender')}
+          filter
+          filterElement={genderRowFilterTemplate}
+          showFilterMenu={false}
+        />
 
-        <Column field="status" header="Status" filter filterElement={statusRowFilterTemplate} showFilterMenu={false} />
+        <Column
+          field="status"
+          header={t('status')}
+          filter
+          filterElement={statusRowFilterTemplate}
+          showFilterMenu={false}
+        />
       </DataTable>
       <Paginator
         first={first}

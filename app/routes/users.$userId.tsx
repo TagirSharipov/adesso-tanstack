@@ -2,6 +2,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { ErrorComponent, Link, createFileRoute } from '@tanstack/react-router';
 import type { ErrorComponentProps } from '@tanstack/react-router';
 import { Button } from 'primereact/button';
+import { useTranslation } from 'react-i18next';
 import { NotFound } from '~/components/NotFound';
 
 import { userQueryOptions } from '~/utils/users';
@@ -23,6 +24,7 @@ export function UserErrorComponent({ error }: ErrorComponentProps) {
 
 function UserComponent() {
   const params = Route.useParams();
+  const { t } = useTranslation();
   const userQuery = useSuspenseQuery(userQueryOptions(params.userId));
 
   const user = userQuery.data;
@@ -34,7 +36,7 @@ function UserComponent() {
       <div className="text-sm">{user.gender}</div>
       <div className="text-sm">{user.status}</div>
       <Link to="/users">
-        <Button link label="Back" />
+        <Button className="p-button-link" link label={t('back')} />
       </Link>
     </div>
   );
