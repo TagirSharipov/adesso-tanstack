@@ -3,7 +3,7 @@ import { User, usersQueryOptions } from '../utils/users';
 import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import { Column, ColumnFilterElementTemplateOptions } from 'primereact/column';
 import { useState } from 'react';
-/* import { FilterMatchMode } from 'primereact/api'; */
+import { FilterMatchMode } from 'primereact/api';
 import usePaginator from '~/hooks/usePaginator';
 import { Paginator } from 'primereact/paginator';
 import { useTranslation } from 'react-i18next';
@@ -14,12 +14,13 @@ export default function UserTable() {
   const { first, pageSize, onPageChange } = usePaginator();
   const usersQuery = useSuspenseQuery(usersQueryOptions(Math.floor(first / pageSize) + 1, pageSize));
   const [filters] = useState<DataTableFilterMeta>({
-    global: { value: null, matchMode: 'contains' },
-    id: { value: null, matchMode: 'contains' },
-    email: { value: null, matchMode: 'contains' },
-    name: { value: null, matchMode: 'contains' },
-    status: { value: null, matchMode: 'equals' },
-    gender: { value: null, matchMode: 'equals' },
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+
+    id: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    email: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    status: { value: null, matchMode: FilterMatchMode.EQUALS },
+    gender: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
 
   const { t } = useTranslation();
