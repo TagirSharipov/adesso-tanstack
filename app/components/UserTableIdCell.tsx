@@ -13,7 +13,6 @@ export default function UserTableIdCell({ user }: UserTableIdCellProps) {
       params={{
         userId: String(user.id),
       }}
-      className="block py-1 text-blue-800 hover:text-blue-600"
     >
       <Button link label={String(user.id)} />
     </Link>

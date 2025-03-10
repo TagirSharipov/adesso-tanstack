@@ -10,7 +10,7 @@ import usePaginator from '~/hooks/usePaginator';
 import { Paginator } from 'primereact/paginator';
 import { useTranslation } from 'react-i18next';
 import UserTableIdCell from './UserTableIdCell';
-import { GenderFilter, StatusFilter } from './UserTableFilter';
+import { Filter } from './UserTableFilter';
 
 export default function UserTable() {
   const { first, pageSize, onPageChange } = usePaginator();
@@ -32,10 +32,18 @@ export default function UserTable() {
   };
 
   const statusRowFilterTemplate = (options: ColumnFilterElementTemplateOptions) => {
-    return <StatusFilter filterApplyCallback={options.filterApplyCallback} value={options.value} />;
+    return (
+      <Filter
+        filterApplyCallback={options.filterApplyCallback}
+        value={options.value}
+        options={['active', 'inactive']}
+      />
+    );
   };
   const genderRowFilterTemplate = (options: ColumnFilterElementTemplateOptions) => {
-    return <GenderFilter filterApplyCallback={options.filterApplyCallback} value={options.value} />;
+    return (
+      <Filter filterApplyCallback={options.filterApplyCallback} value={options.value} options={['male', 'female']} />
+    );
   };
 
   return (
