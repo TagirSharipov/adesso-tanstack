@@ -134,7 +134,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/"
             activeProps={{
-              style: { textDecoration: 'underline' },
+              style: { fontWeight: '1px solid #007bff' },
             }}
             activeOptions={{ exact: true }}
           >
@@ -143,7 +143,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/users"
             activeProps={{
-              style: { textDecoration: 'underline' },
+              style: { borderBottom: '1px solid #007bff' },
             }}
           >
             <Button label={t('Users')} link />
