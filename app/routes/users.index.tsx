@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { Suspense } from 'react';
 import UserTable from '~/components/UserTable';
 import { ProgressSpinner } from 'primereact/progressspinner';
+
 export const Route = createFileRoute('/users/')({
   component: UsersIndexComponent,
 });
