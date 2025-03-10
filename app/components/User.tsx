@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
+import { Button } from 'primereact/button';
 import { useTranslation } from 'react-i18next';
 
 import { userQueryOptions } from '~/utils/users';
@@ -11,22 +12,22 @@ export default function User({ userId }: { userId: string }) {
   const user = userQuery.data;
 
   return (
-    <div className="space-y-2">
-      <h4 className="text-xl font-bold underline">{user.name}</h4>
-      <div className="text-sm">
+    <div>
+      <h4>{user.name}</h4>
+      <div>
         <strong>Email:</strong> {user.email}
       </div>
-      <div className="text-sm">
+      <div>
         <strong>Gender:</strong> {user.gender}
       </div>
-      <div className="text-sm">
+      <div>
         <strong>Status:</strong> {user.status}
       </div>
 
-      <div className="mt-3">
+      <div style={{ marginTop: 20 }}>
         {' '}
-        <Link to="/users" className="mt-5">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">{t('back')}</button>
+        <Link to="/users">
+          <Button label={t('back')} />
         </Link>
       </div>
     </div>

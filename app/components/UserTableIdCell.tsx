@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { User } from '../utils/users';
+import { Button } from 'primereact/button';
 
 interface UserTableIdCellProps {
   user: User;
@@ -14,7 +15,7 @@ export default function UserTableIdCell({ user }: UserTableIdCellProps) {
       }}
       className="block py-1 text-blue-800 hover:text-blue-600"
     >
-      <div>{user.id}</div>
+      <Button link label={String(user.id)} />
     </Link>
   );
 }

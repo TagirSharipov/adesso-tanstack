@@ -11,7 +11,8 @@ import { seo } from '~/utils/seo';
 import { PrimeReactProvider } from 'primereact/api';
 import i18n from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/themes/bootstrap4-light-blue/theme.css';
+
 import { Button } from 'primereact/button';
 
 i18n
@@ -133,7 +134,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/"
             activeProps={{
-              className: 'font-bold',
+              style: { textDecoration: 'underline' },
             }}
             activeOptions={{ exact: true }}
           >
@@ -142,7 +143,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/users"
             activeProps={{
-              className: 'font-bold',
+              style: { textDecoration: 'underline' },
             }}
           >
             <Button label={t('Users')} link />
