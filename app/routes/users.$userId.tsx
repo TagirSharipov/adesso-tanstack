@@ -32,12 +32,22 @@ function UserComponent() {
   return (
     <div className="space-y-2">
       <h4 className="text-xl font-bold underline">{user.name}</h4>
-      <div className="text-sm">{user.email}</div>
-      <div className="text-sm">{user.gender}</div>
-      <div className="text-sm">{user.status}</div>
-      <Link to="/users">
-        <Button className="p-button-link" link label={t('back')} />
-      </Link>
+      <div className="text-sm">
+        <strong>Email:</strong> {user.email}
+      </div>
+      <div className="text-sm">
+        <strong>Gender:</strong> {user.gender}
+      </div>
+      <div className="text-sm">
+        <strong>Status:</strong> {user.status}
+      </div>
+
+      <div className="mt-3">
+        {' '}
+        <Link to="/users" className="mt-5">
+          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">{t('back')}</button>
+        </Link>
+      </div>
     </div>
   );
 }
