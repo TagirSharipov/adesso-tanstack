@@ -134,7 +134,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/"
             activeProps={{
-              style: { fontWeight: '1px solid #007bff' },
+              style: { borderBottom: '1px solid #007bff' },
             }}
             activeOptions={{ exact: true }}
           >
@@ -149,7 +149,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Button label={t('Users')} link />
           </Link>{' '}
         </div>
-        <hr />
+
         {children}
 
         <Scripts />
