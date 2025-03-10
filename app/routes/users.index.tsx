@@ -18,6 +18,8 @@ function UsersIndexComponent() {
   const usersQuery = useSuspenseQuery(usersQueryOptions(Math.floor(first / pageSize) + 1, pageSize));
   const [filters] = useState<DataTableFilterMeta>({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+
+    id: { value: null, matchMode: FilterMatchMode.CONTAINS },
     email: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.CONTAINS },
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
