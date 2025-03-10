@@ -30,7 +30,7 @@ To set up the project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/TagirSharipov/adesso-tanstack.git
+   git clone https://github.com/TagirSharipov/adesso-tanstack.git <repository-directory>
    cd <repository-directory>
    ```
 2. **Install dependencies**:
