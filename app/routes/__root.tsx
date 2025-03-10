@@ -12,6 +12,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import i18n from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import { Button } from 'primereact/button';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -136,7 +137,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             }}
             activeOptions={{ exact: true }}
           >
-            Home
+            <Button label="Home" link />
           </Link>{' '}
           <Link
             to="/users"
@@ -144,7 +145,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               className: 'font-bold',
             }}
           >
-            {t('Users')}
+            <Button label={t('Users')} link />
           </Link>{' '}
         </div>
         <hr />
